@@ -11,7 +11,21 @@ package linkedlist;
 public class LinkedListImpl {
 
     Node head;
-
+   
+    //Sorting
+//    Node tmp = head, nextPos = null;
+//        while (tmp != null) {
+//            nextPos = tmp.next;
+//            while (nextPos != null) {
+//                if (tmp.info.weight > nextPos.info.weight) {
+//                    Lion temp = tmp.info;
+//                    tmp.info = nextPos.info;
+//                    nextPos.info = temp;
+//                }
+//                nextPos = nextPos.next;
+//            }
+//            tmp = tmp.next;
+//        }
     public LinkedListImpl insert(LinkedListImpl list, int data) {
         Node newNode = new Node(data);
 
@@ -26,6 +40,29 @@ public class LinkedListImpl {
         }
 
         return list;
+    }
+    int count = 0;
+    
+    void addFirst(int data) {
+        //You should write here appropriate statements to complete this function. 
+        Node newNode = new Node(data);
+
+        newNode.next = head;
+        head = newNode;
+        count++;
+    }
+
+    void addBeforeLast(int data) {
+        //You should write here appropriate statements to complete this function. 
+        int innerCount = 0;
+        Node newNode = new Node(data);
+        Node last = head;
+        while (innerCount < count - 2) {
+            last = last.next;
+            innerCount++;
+        }
+        newNode.next = last.next;
+        last.next = newNode;
     }
 
     public LinkedListImpl delete(LinkedListImpl list, int key) {
